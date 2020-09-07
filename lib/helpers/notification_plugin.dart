@@ -273,7 +273,23 @@ class NotificationPlugin {
 
 }
 
-// Initialize the plugin in home_screen.dart at initState
+// TODO: ATTENTION!!!
+
+/* Initialize the plugin in home_screen.dart at initState. 
+eg: notificationPlugin.setListenerForLowerVersions(onNotificationInLowerVersions);
+eg: notificationPlugin.setOnNotificationClick(onNotificationClick);
+
+// check ios version is lower than 10
+onNotificationInLowerVersions(ReceivedNotification receivedNotification) {
+  print("receivedNotification $receivedNotification");
+}
+
+// trigger when push notification click, you can pass the Navigator push screen
+onNotificationClick(String payload) {
+  print("payload $payload");
+}
+*/
+
 NotificationPlugin notificationPlugin = NotificationPlugin._();
 
 class ReceivedNotification {
