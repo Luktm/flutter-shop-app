@@ -58,14 +58,16 @@ class MyApp extends StatelessWidget {
                 ),
                 home: auth.isAuth
                     ? ProductOverviewScreen()
-                    : FutureBuilder(
-                        future: auth.tryAutoLogin(),
-                        builder: (ctx, authResultSnapshot) =>
-                            authResultSnapshot.connectionState ==
-                                    ConnectionState.waiting
-                                ? SplashScreen()
-                                : AuthScreen(),
-                      ),
+                    : StreamProvider<ConnectivityResult>( 
+                        create: (context) => connectivity.connectionStatusController.stream,
+                        FutureBuilder(
+                          future: auth.tryAutoLogin(),
+                          builder: (ctx, authResultSnapshot) =>
+                              authResultSnapshot.connectionState ==
+                                      ConnectionState.waiting
+                                  ? SplashScreen()
+                                  : AuthScreen(),
+                      ),),
                 routes: {
                   ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
                   CartScreen.routeName: (ctx) => CartScreen(),
