@@ -52,8 +52,8 @@ class MyApp extends StatelessWidget {
                   accentColor: Colors.deepOrange,
                   fontFamily: 'Lato',
                   pageTransitionsTheme: PageTransitionsTheme(builders: {
-                    TargetPlatform.android: CustomPageTransitionBuilder(),
-                    TargetPlatform.iOS: CustomPageTransitionBuilder(),
+                    TargetPlatform.android: OpenUpwardsPageTransitionsBuilder(),
+                    TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
                   }, ),
                 ),
                 home: auth.isAuth
